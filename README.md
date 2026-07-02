@@ -1,5 +1,5 @@
-![Version](https://img.shields.io/github/v/release/KaraW3B/SDK?sort=semver&display_name=tag&style=for-the-badge&label=version)
-[![License](https://img.shields.io/github/license/KaraW3B/SDK?style=for-the-badge)](https://github.com/KaraW3B/server?tab=MIT-1-ov-file)
+[![Version](https://img.shields.io/github/v/release/KaraW3B/SDK?sort=semver&display_name=tag&style=for-the-badge&label=version)](https://github.com/KaraW3B/SDK/releases)
+[![License](https://img.shields.io/github/license/KaraW3B/SDK?style=for-the-badge)](https://github.com/KaraW3B/SDK?tab=MIT-1-ov-file)
 
 # KaraW3B SDK 
 
