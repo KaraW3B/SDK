@@ -1,6 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>netstandard2.0</TargetFramework>
 		<OutputType>Library</OutputType>
 		<RootNamespace>KaraW3B.SDK.Client</RootNamespace>
 		<AssemblyName>KaraW3B.SDK.Client</AssemblyName>
@@ -15,9 +14,5 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\SDK\KaraW3B.SDK.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<PackageReference Include="Microsoft.Bcl.AsyncInterfaces" />
 	</ItemGroup>
 </Project>

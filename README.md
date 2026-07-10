@@ -8,9 +8,12 @@
 
 The KaraW3B SDK aims to simplify integration of KaraW3B in thirdparty clients
 
+It also provides some usefull stuff to interact with UltraStar text files
+
 ## 📦 Packages
-| Name                | Content                                               |
-|---------------------|-------------------------------------------------------|
-| KaraW3B.SDK         | Contains basical stuff like models and some helpers   |
-| KaraW3B.SDK.Client  | Contains connectors to easily call KaraW3B server API |
+| Name                      | Content                                               |
+|---------------------------|-------------------------------------------------------|
+| KaraW3B.SDK               | Contains basical stuff like models and some helpers   |
+| KaraW3B.SDK.Client        | Contains connectors to easily call KaraW3B server API |
+| KaraW3B.SDK.Interpreters  | Contains parsers and writers for UltraStar text files |
 

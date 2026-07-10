@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<OutputType>Library</OutputType>
-		<RootNamespace>KaraW3B.SDK</RootNamespace>
-		<AssemblyName>KaraW3B.SDK</AssemblyName>
-		<PackageId>KaraW3B.SDK</PackageId>
+		<RootNamespace>KaraW3B.SDK.Interpreters</RootNamespace>
+		<AssemblyName>KaraW3B.SDK.Interpreters</AssemblyName>
+		<PackageId>KaraW3B.SDK.Interpreters</PackageId>
 		<IsPackable>True</IsPackable>
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 	</PropertyGroup>
@@ -13,6 +13,6 @@
 	</ItemGroup>
 	
 	<ItemGroup>
-		<PackageReference Include="System.Text.Json" />
+		<ProjectReference Include="..\SDK\KaraW3B.SDK.csproj" />
 	</ItemGroup>
 </Project>

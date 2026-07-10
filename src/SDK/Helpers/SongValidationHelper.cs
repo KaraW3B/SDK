@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using KaraW3B.SDK.Models.Analyzes;
+﻿using KaraW3B.SDK.Models.Analyzes;
 using KaraW3B.SDK.Models.Songs;
 using KaraW3B.SDK.Models.Songs.Medleys;
 using KaraW3B.SDK.Models.Songs.Notes;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace KaraW3B.SDK.Helpers
 {
@@ -17,12 +18,12 @@ namespace KaraW3B.SDK.Helpers
     /// </summary>
     public static class SongValidationHelper
     {
-        public static async Task<FullAnalyzeResult> CheckFullSongErrorsAsync(IFileHelper fileHelper,
+        public static async Task<FullAnalyzeResult> CheckFullSongErrorsAsync(
             IAnalyzableSong song,
-            IEnumerable<IAnalyzableSongNote> notes, CancellationToken cancellationToken)
+            IEnumerable<ISongNote> notes, CancellationToken cancellationToken)
         {
             var result = new FullAnalyzeResult();
-            result.InfoErrors.AddRange(await CheckInfosErrorsAsync(fileHelper, song, cancellationToken));
+            result.InfoErrors.AddRange(await CheckInfosErrorsAsync(song, cancellationToken));
             result.NotesErrors.AddRange(await CheckNotesErrorsAsync(song, notes, cancellationToken));
             return result;
         }
@@ -39,7 +40,7 @@ namespace KaraW3B.SDK.Helpers
 
         #region Infos
 
-        public static Task<List<InfoAnalyzeError>> CheckInfosErrorsAsync(IFileHelper fileHelper, IAnalyzableSong song,
+        public static Task<List<InfoAnalyzeError>> CheckInfosErrorsAsync(IAnalyzableSong song,
             CancellationToken cancellationToken)
         {
             return Task.Run(() =>
@@ -47,7 +48,7 @@ namespace KaraW3B.SDK.Helpers
                 var errors = new List<InfoAnalyzeError>();
 
                 errors.AddRange(CheckMandatoryValues(song));
-                errors.AddRange(CheckPaths(fileHelper, song));
+                errors.AddRange(CheckPaths(song));
 
                 if (CheckBpm(song.Bpm) is { } bpmError)
                 {
@@ -119,7 +120,7 @@ namespace KaraW3B.SDK.Helpers
             }
         }
 
-        public static IEnumerable<InfoAnalyzeError> CheckPaths(IFileHelper fileHelper, IAnalyzableSong song)
+        public static IEnumerable<InfoAnalyzeError> CheckPaths(IAnalyzableSong song)
         {
             var pathsToCheck = new Dictionary<string, string>
             {
@@ -133,7 +134,7 @@ namespace KaraW3B.SDK.Helpers
 
             foreach (var pathToCheck in pathsToCheck)
             {
-                if (!string.IsNullOrEmpty(pathToCheck.Value) && !fileHelper.IsRelativePath(pathToCheck.Value))
+                if (!string.IsNullOrEmpty(pathToCheck.Value) && Path.IsPathFullyQualified(pathToCheck.Value))
                 {
                     yield return new InfoAnalyzeError(
                         $"The {pathToCheck.Key} path must be a relative path");
@@ -233,7 +234,7 @@ namespace KaraW3B.SDK.Helpers
         #endregion
 
         public static Task<List<NoteAnalyzeError>> CheckNotesErrorsAsync(IAnalyzableSong song,
-            IEnumerable<IAnalyzableSongNote> songNotes,
+            IEnumerable<ISongNote> songNotes,
             CancellationToken cancellationToken)
         {
             return Task.Run(() =>

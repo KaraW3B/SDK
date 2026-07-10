@@ -1,6 +1,6 @@
 ﻿namespace KaraW3B.SDK.Models.Songs.Notes
 {
-    public interface IAnalyzableSongNote
+    public interface ISongNote
     {
         int FileLine { get; }
         NoteType Type { get; }
