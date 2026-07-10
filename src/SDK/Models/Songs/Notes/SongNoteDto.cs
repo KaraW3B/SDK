@@ -3,7 +3,7 @@
     /// <summary>
     ///     A song's note
     /// </summary>
-    public sealed class SongNoteDto : IAnalyzableSongNote
+    public sealed class SongNoteDto : ISongNote
     {
         /// <summary>
         ///     The number of the line in the song file

@@ -4,7 +4,7 @@ namespace KaraW3B.SDK.Models.Analyzes
 {
     public sealed class NoteAnalyzeError
     {
-        public NoteAnalyzeError(string message, IAnalyzableSongNote note = null)
+        public NoteAnalyzeError(string message, ISongNote note = null)
         {
             FileLine = note?.FileLine;
             Message = message;
