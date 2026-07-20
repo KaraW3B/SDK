@@ -11,7 +11,7 @@ permissions:
         
 jobs:
   release:
-    if: github.repository == 'KaraW3B/SDK'
+    if: github.repository == 'KaraW3B/interpreters'
     runs-on: ubuntu-latest
 
     steps:
@@ -29,7 +29,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore --no-cache
       working-directory: src
-    - name: Packing SDK
+    - name: Packing NuGet
       run: dotnet pack --configuration Release --no-restore --version ${{ env.releaseVersion }}
       working-directory: src
 
