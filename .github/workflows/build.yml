@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    if: github.repository == 'KaraW3B/SDK'
+    if: github.repository == 'KaraW3B/interpreters'
     runs-on: ubuntu-latest
 
     steps:
